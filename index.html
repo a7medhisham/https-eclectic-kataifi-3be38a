@@ -1,0 +1,749 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>About Us - Eco Smart Bin | Intelligent Waste Management</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a5f7a, #0d3b4f);
+            padding: 20px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Bubbles */
+        .bubble {
+            position: fixed;
+            bottom: -100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: rise 10s infinite ease-in;
+            z-index: 0;
+        }
+
+        @keyframes rise {
+            0% {
+                bottom: -100px;
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(100px);
+            }
+
+            100% {
+                bottom: 1080px;
+                transform: translateX(-100px);
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a5f7a;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ffd700;
+            border-radius: 10px;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #ffc107;
+            }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Logo Design */
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #fff, #f0f0f0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: bounce 2s infinite, pulse 2s infinite;
+            transition: transform 0.3s;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+            .logo img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+
+            50% {
+                box-shadow: 0 0 20px #ffd700;
+            }
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .title {
+            color: #ffd700;
+            margin-top: 15px;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideInRight 0.8s ease-out, glow 3s infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            }
+
+            50% {
+                text-shadow: 0 0 20px #ffd700;
+            }
+        }
+
+        .subtitle {
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        /* Cards */
+        .project-card {
+            background: rgba(255,255,255,0.95);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            animation: fadeInScale 0.6s ease-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .project-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .project-card:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .project-card:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            color: #1a5f7a;
+            margin-bottom: 15px;
+            border-left: 4px solid #ffd700;
+            padding-left: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .section-title::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: #ffd700;
+                transition: width 0.5s ease;
+            }
+
+        .project-card:hover .section-title::after {
+            width: 100%;
+        }
+
+        .project-description {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Video Container - improved styling for full responsiveness and sound */
+        .video-container {
+            flex: 1;
+            min-width: 280px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            background: #000;
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+            .video-container:hover {
+                transform: scale(1.02);
+                box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+            }
+
+        .responsive-video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+            background: #000;
+            transition: all 0.2s;
+        }
+        /* make video full width on small screens and clickable for fullscreen */
+        @media (max-width: 680px) {
+            .video-container {
+                min-width: 100%;
+            }
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .team-card {
+            width: 170px;
+            background: white;
+            border-radius: 15px;
+            text-align: center;
+            padding: 20px 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: forwards;
+            opacity: 0;
+        }
+
+            .team-card:nth-child(1) {
+                animation-delay: 0.1s;
+            }
+
+            .team-card:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+
+            .team-card:nth-child(3) {
+                animation-delay: 0.3s;
+            }
+
+            .team-card:nth-child(4) {
+                animation-delay: 0.4s;
+            }
+
+            .team-card:nth-child(5) {
+                animation-delay: 0.5s;
+            }
+
+            .team-card:nth-child(6) {
+                animation-delay: 0.6s;
+            }
+
+            .team-card:hover {
+                transform: translateY(-12px) scale(1.03);
+                box-shadow: 0 25px 40px rgba(0,0,0,0.25);
+            }
+
+        .team-img {
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #ffd700;
+            transition: all 0.4s ease;
+        }
+
+        .team-card:hover .team-img {
+            border-color: #1a5f7a;
+            transform: scale(1.08) rotate(5deg);
+        }
+
+        .team-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .team-card:hover .team-img img {
+            transform: scale(1.1);
+        }
+
+        .team-name {
+            margin-top: 12px;
+            font-weight: bold;
+            color: #1a5f7a;
+            transition: color 0.3s;
+        }
+
+        .team-card:hover .team-name {
+            color: #ffd700;
+        }
+
+        .team-role {
+            font-size: 11px;
+            color: white;
+            background: linear-gradient(135deg, #1a5f7a, #0d3b4f);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-top: 8px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .team-card:hover .team-role {
+            background: linear-gradient(135deg, #ffd700, #ffc107);
+            color: #1a5f7a;
+            transform: scale(1.05);
+        }
+
+        /* Supervisor & Technical Assistant */
+        .supervisor-card {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            background: linear-gradient(135deg, #fff, #f8f9fa);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 15px;
+            transition: all 0.4s ease;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+            .supervisor-card:hover {
+                transform: translateY(-8px) scale(1.01);
+                box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            }
+
+        .supervisor-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #ffd700;
+            transition: all 0.4s;
+            background: linear-gradient(135deg, #1a5f7a, #0d3b4f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+            .supervisor-img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center center;
+            }
+
+        .supervisor-card:hover .supervisor-img {
+            transform: scale(1.05);
+            border-color: #1a5f7a;
+            animation: pulse 1s infinite;
+        }
+
+        .supervisor-info h3 {
+            color: #1a5f7a;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        .supervisor-card:hover .supervisor-info h3 {
+            color: #ffd700;
+        }
+
+        .supervisor-info p {
+            color: #555;
+        }
+
+        .supervisor-title {
+            display: inline-block;
+            background: #ffd700;
+            color: #1a5f7a;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 8px;
+            transition: all 0.3s;
+        }
+
+        .supervisor-card:hover .supervisor-title {
+            background: #1a5f7a;
+            color: #ffd700;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: white;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .footer-slogan {
+            font-size: 12px;
+            margin-top: 8px;
+            line-height: 1.6;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 1.5rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .team-card {
+                width: 150px;
+            }
+
+            .supervisor-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .team-card {
+                width: 130px;
+            }
+
+            .team-img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .team-name {
+                font-size: 12px;
+            }
+        }
+
+        /* volume indicator hint (optional) */
+        .video-note {
+            font-size: 12px;
+            color: #f0f0f0;
+            text-align: center;
+            margin-top: 8px;
+            background: rgba(0,0,0,0.6);
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Animated Bubbles -->
+    <div class="bubble" style="width: 80px; height: 80px; left: 10%; animation-duration: 8s;"></div>
+    <div class="bubble" style="width: 120px; height: 120px; left: 25%; animation-duration: 12s; animation-delay: 2s;"></div>
+    <div class="bubble" style="width: 60px; height: 60px; left: 50%; animation-duration: 6s; animation-delay: 1s;"></div>
+    <div class="bubble" style="width: 100px; height: 100px; left: 75%; animation-duration: 10s; animation-delay: 3s;"></div>
+    <div class="bubble" style="width: 90px; height: 90px; left: 85%; animation-duration: 9s; animation-delay: 0.5s;"></div>
+
+    <div class="container">
+
+        <!-- Header with Logo -->
+        <div class="header">
+            <div class="logo">
+                <img src="images/logo.jpg" alt="Eco Smart Bin Logo" onerror="this.src='https://via.placeholder.com/120?text=ESB'">
+            </div>
+            <h1 class="title">Eco Smart Bin</h1>
+            <p class="subtitle">Intelligent Waste Management System</p>
+        </div>
+
+        <!-- Project Section with enhanced video controls & sound -->
+        <div class="project-card">
+            <h2 class="section-title">🚀 Our Project</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+                <div style="flex: 1; min-width: 250px;">
+                    <p class="project-description">
+                        Eco Smart Bin is an innovative mobile application designed to improve waste management.
+                        The system allows users to recycle waste and earn points, which can be exchanged for cash rewards.
+                        It features real-time monitoring of bins, QR code verification,
+                        and instant notifications to ensure a smooth and efficient recycling process.
+                    </p>
+
+                </div>
+
+                <!-- Video block: improved to show audio and fullscreen capabilities -->
+                <div class="video-container">
+                    <video id="projectVideo"
+                           class="responsive-video"
+                           controls
+                           playsinline
+                           preload="metadata">
+                        <source src="videos/final-btngan.mp4" type="video/mp4">
+                    </video>
+                    <div style="text-align: center; margin-top: 5px;">
+                        <span class="video-note">🖱️ Double-click for fullscreen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Members Section -->
+        <div class="project-card">
+            <h2 class="section-title">👨‍💻 Our Team</h2>
+            <div class="team-grid">
+
+                <div class="team-card" onclick="window.open('https://www.linkedin.com/in/ahmed-saad-779877405/?skipRedirect=true', '_blank')">
+                    <div class="team-img">
+                        <img src="images/saad.jpg" alt="Ahmed Saad" onerror="this.src='https://via.placeholder.com/100?text=AS'">
+                    </div>
+                    <div class="team-name">Ahmed Saad</div>
+                    <div class="team-role">🚀 Team Leader & 🔌 Hardware</div>
+                </div>
+
+                <div class="team-card" onclick="window.open('https://www.linkedin.com/in/ahmed-hisham-8b78832a6/', '_blank')">
+                    <div class="team-img">
+                        <img src="images/hisham.jpg" alt="Ahmed Hisham" onerror="this.src='https://via.placeholder.com/100?text=AH'">
+                    </div>
+                    <div class="team-name">Ahmed Hisham</div>
+                    <div class="team-role">📱 Android Mobile Developer & 👨‍💻 Front End</div>
+                </div>
+
+                <div class="team-card" onclick="window.open('https://github.com/KemoX911', '_blank')">
+                    <div class="team-img">
+                        <img src="images/kareem.jpg" alt="Kareem" onerror="this.src='https://via.placeholder.com/100?text=K'">
+                    </div>
+                    <div class="team-name">Kareem</div>
+                    <div class="team-role">🤖 AI Engineer</div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="images/Abdo.jpg" alt="Abdulrahman" onerror="this.src='https://via.placeholder.com/100?text=A'">
+                    </div>
+                    <div class="team-name">Abdulrahman</div>
+                    <div class="team-role">🔌 Hardware Engineer</div>
+                </div>
+
+                <div class="team-card" onclick="window.open('https://www.linkedin.com/in/omar-salama-978184288/', '_blank')">
+                    <div class="team-img">
+                        <img src="images/omar.jpg" alt="Omar" onerror="this.src='https://via.placeholder.com/100?text=O'">
+                    </div>
+                    <div class="team-name">Omar</div>
+                    <div class="team-role">⚙️ Backend Developer</div>
+                </div>
+
+                <div class="team-card" onclick="window.open('https://www.linkedin.com/in/mohamed-abdelhai-b79994266/', '_blank')">
+                    <div class="team-img">
+                        <img src="images/Mohamed.jpg" alt="Mohamed" onerror="this.src='https://via.placeholder.com/100?text=M'">
+                    </div>
+                    <div class="team-name">Mohamed</div>
+                    <div class="team-role">📱 Flutter Mobile Developer</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Technical Assistant (Khaled Saad) -->
+        <div class="project-card" onclick="window.open('https://engkhaledsaad.com/', '_blank')">
+            <h2 class="section-title">👨‍💻 Technical Assistant</h2>
+            <div class="supervisor-card">
+                <div class="supervisor-info">
+                    <h3>ENG. Khaled Saad</h3>
+                    <div class="supervisor-title">DevOps Engineer</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Supervisor (Dr. Sherin Omran) -->
+        <div class="project-card" onclick="window.open('https://engkhaledsaad.com/', '_blank')">
+            <h2 class="section-title">👩‍🏫 Supervisor</h2>
+            <div class="supervisor-card">
+                <div class="supervisor-img">
+                    <img src="images/Dr.jpg" alt="Dr. Sherin Omran" onerror="this.src='https://via.placeholder.com/120?text=Dr'">
+                </div>
+                <div class="supervisor-info">
+                    <h3>Dr. Sherin Omran</h3>
+                    <div class="supervisor-title">Project Supervisor</div>
+                    <p>Professor of Computer Engineering<br>Faculty of Engineering | Visionary Mentor</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2025 Eco Smart Bin Team | All Rights Reserved</p>
+            <div class="footer-slogan">
+                Turn Waste into Value 🌱<br>
+                Small Actions, Big Impact 💚
+            </div>
+            <p style="font-size: 12px; margin-top: 10px;">🌍 Let's make the world cleaner together</p>
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            const video = document.getElementById('projectVideo');
+            if (video) {
+                video.addEventListener('loadedmetadata', () => {
+                    // Optional: ensure volume is set to a default level if needed
+                    if (video.volume === 1) { } else { video.volume = 0.8; }
+                    // Make sure controls are always interactive
+                    video.setAttribute('controls', 'true');
+                });
+
+                // Add double-click fullscreen functionality for better UX (since many users double-click to fullscreen video)
+                video.addEventListener('dblclick', (e) => {
+                    e.preventDefault();
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else if (video.webkitRequestFullscreen) { /* Safari */
+                        video.webkitRequestFullscreen();
+                    } else if (video.msRequestFullscreen) {
+                        video.msRequestFullscreen();
+                    }
+                });
+                video.addEventListener('error', () => {
+                    const container = video.closest('.video-container');
+                    if (container && !container.querySelector('.video-error-msg')) {
+                        const errDiv = document.createElement('div');
+                        errDiv.className = 'video-error-msg';
+                        errDiv.style.backgroundColor = '#ffcccc';
+                        errDiv.style.color = '#b00020';
+                        errDiv.style.padding = '10px';
+                        errDiv.style.borderRadius = '12px';
+                        errDiv.style.marginTop = '8px';
+                        errDiv.style.fontSize = '14px';
+                        errDiv.style.textAlign = 'center';
+                        errDiv.innerHTML = '⚠️ Video file not found at <strong>videos/final tarsh.mp4</strong>. Please ensure the video file exists or update the path.';
+                        container.appendChild(errDiv);
+                    }
+                });
+
+                // Optional: ensure that video can be resized and responsive for external fullscreen.
+                // Also add volume indicator on first interaction.
+                let interacted = false;
+                video.addEventListener('play', () => {
+                    if (!interacted && video.muted) {
+                        // subtle reminder that it's muted but can be turned on
+                        console.log("Video playing but muted, click volume button to hear audio.");
+                    }
+                    interacted = true;
+                });
+            } else {
+                console.warn("Video element not found with id 'projectVideo'");
+            }
+        })();
+    </script>
+</body>
+</html>
