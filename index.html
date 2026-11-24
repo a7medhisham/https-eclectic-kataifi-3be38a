@@ -544,6 +544,45 @@
             border-radius: 20px;
             backdrop-filter: blur(4px);
         }
+        .download-section {
+            text-align: center;
+            margin: 30px 0 10px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #ffd700, #ffc107);
+            color: #1a5f7a;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 14px 32px;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+            .download-btn:hover {
+                transform: translateY(-5px) scale(1.05);
+                background: #fff;
+                box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            }
+
+            .download-btn svg {
+                width: 26px;
+                height: 26px;
+                fill: currentColor;
+            }
+
+        .download-hint {
+            color: #e0e0e0;
+            font-size: 12px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 
@@ -678,7 +717,16 @@
                 </div>
             </div>
         </div>
-
+        <!-- Download App -->
+        <div class="download-section">
+            <a href="app-release.apk" download class="download-btn">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z" />
+                </svg>
+                Download the App
+            </a>
+            <p class="download-hint">📱 Android APK • Eco Smart Bin</p>
+        </div>
         <!-- Footer -->
         <div class="footer">
             <p>© 2025 Eco Smart Bin Team | All Rights Reserved</p>
